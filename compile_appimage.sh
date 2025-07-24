@@ -9,19 +9,19 @@ chmod u+x appimagetool.AppImage
 mkdir -p AppDir/usr/bin
 echo "[Desktop Entry]
 Type=Application
-Name=Boilerplate
-Exec=boilerplate
+Name=Motusolve
+Exec=motusolve
 Icon=logo
-Categories=Utility;" > AppDir/boilerplate.desktop
+Categories=Utility;" > AppDir/motusolve.desktop
 
 echo '#!/bin/bash
-exec $APPDIR/usr/bin/boilerplate' > AppDir/AppRun
+exec $APPDIR/usr/bin/motusolve' > AppDir/AppRun
 chmod u+x AppDir/AppRun
 
-cp dist/boilerplate/boilerplate-linux_x64 AppDir/usr/bin/boilerplate
-cp dist/boilerplate/resources.neu AppDir/usr/bin
+cp dist/motusolve/motusolve-linux_x64 AppDir/usr/bin/motusolve
+cp dist/motusolve/resources.neu AppDir/usr/bin
 
 cp vue-src/public/logo.png AppDir
 
-./appimagetool.AppImage AppDir boilerplate
-chmod u+x boilerplate
+./appimagetool.AppImage AppDir motusolve
+chmod u+x motusolve
