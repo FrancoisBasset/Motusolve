@@ -5,9 +5,19 @@
 		<div class="mx-auto">
 			<label>Mot à trouver</label>
 			<LetterGroup v-model="wordToFind" />
+
+			<label>Lettres existantes</label>
 			<LetterGroup v-model="lettersHints" />
 
-			<button @click="search">Lancer la recherche</button>
+			<button @click="search" class="p-3 bg-amber-600 rounded text-white cursor-pointer">Lancer la recherche</button>
+
+			<div v-if="results.length > 0">
+				<label>Résultats :</label>
+
+				<div class="flex flex-wrap">
+					<label v-for="result in results" :key="result" class="p-2 m-1 rounded bg-amber-400">{{ result }}</label>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -21,7 +31,8 @@ export default {
 	data: () => ({
 		wordToFind: [],
 		lettersHints: [],
-		dictionary: words.split('\r\n')
+		dictionary: words.split('\r\n'),
+		results: []
 	}),
 	methods: {
 		search() {
@@ -31,13 +42,11 @@ export default {
 
 			const hints = this.lettersHints.filter(Boolean);
 
-			const matches = this.dictionary.filter(word => {
+			this.results = this.dictionary.filter(word => {
 				if (word.length !== this.wordToFind.length) return false;
 				if (!regex.test(word)) return false;
 				return hints.every(hint => word.includes(hint));
 			});
-
-			console.log('Résultats:', matches);
 		}
 	}
 };
