@@ -3,7 +3,7 @@
 		<button class="absolute top-0 right-0 w-4 h-4 p-0 text-xs cursor-pointer leading-none text-red-500 hover:text-red-700" tabindex="-1" @click="$emit('onRemove')">×</button>
 
 		<!-- input centré -->
-		<input class="w-full h-full text-center outline-none uppercase border rounded" :value="letter" type="text" maxlength="1" @input="handleInput" />
+		<input class="w-full h-full text-center outline-none uppercase border rounded border-gray-300 focus:ring-2 focus:ring-amber-500" :value="letter" type="text" maxlength="1" @input="handleInput" />
 	</div>
 </template>
 

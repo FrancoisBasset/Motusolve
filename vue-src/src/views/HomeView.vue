@@ -1,20 +1,24 @@
 <template>
-	<div class="flex flex-col text-center mx-auto">
-		<label class="text-6xl font-extralight">Motusolve</label>
+	<div class="flex flex-col items-center text-center space-y-6">
+		<h1 class="text-6xl font-extralight">Motusolve</h1>
 
-		<div class="mx-auto">
-			<label>Mot à trouver</label>
-			<LetterGroup v-model="wordToFind" />
+		<div class="mx-auto bg-white p-6 rounded shadow-md space-y-4">
+			<div class="space-y-2">
+				<label class="block">Mot à trouver</label>
+				<LetterGroup v-model="wordToFind" />
+			</div>
 
-			<label>Lettres existantes</label>
-			<LetterGroup v-model="lettersHints" />
+			<div class="space-y-2">
+				<label class="block">Lettres existantes</label>
+				<LetterGroup v-model="lettersHints" />
+			</div>
 
-			<button @click="search" class="p-3 bg-amber-600 rounded text-white cursor-pointer">Lancer la recherche</button>
+			<button @click="search" class="p-3 bg-amber-600 rounded text-white cursor-pointer hover:bg-amber-700 transition">Lancer la recherche</button>
 
-			<div v-if="results.length > 0">
-				<label>Résultats :</label>
+			<div v-if="results.length > 0" class="space-y-2">
+				<label class="block">Résultats :</label>
 
-				<div class="flex flex-wrap">
+				<div class="flex flex-wrap justify-center">
 					<label v-for="result in results" :key="result" class="p-2 m-1 rounded bg-amber-400">{{ result }}</label>
 				</div>
 			</div>

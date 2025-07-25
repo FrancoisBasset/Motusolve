@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-row gap-1">
+	<div class="flex flex-row gap-1 bg-gray-100 p-2 rounded justify-center">
 		<Letter v-for="(letter, i) in letters" :key="letter" :letter="letter" @onChange="letter => onChange(letter, i)" @onRemove="removeLetter(i)" />
 		<LetterPlus @click="addLetter" />
 	</div>
